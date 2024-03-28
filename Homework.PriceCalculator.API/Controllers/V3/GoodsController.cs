@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Workshop.Api.Bll.Models;
-using Workshop.Api.Bll.Services;
-using Workshop.Api.Bll.Services.Interfaces;
-using Workshop.Api.Dal.Entities;
-using Workshop.Api.Dal.Repositories.Interfaces;
+﻿using Homework.PriceCalculator.Domain.Models;
+using Homework.PriceCalculator.Domain.Seporated;
+using Homework.PriceCalculator.Domain.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using Workshop.Api.Responses.V2;
+using GoodViewModel = Homework.PriceCalculator.Domain.Entities.GoodViewModel;
 
 namespace Workshop.Api.Controllers.V3;
 

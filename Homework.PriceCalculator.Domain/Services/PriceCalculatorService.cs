@@ -1,7 +1,9 @@
-﻿using Homework.PriceCalculator.Domain.Entities;
+﻿using System;
+using System.Linq;
+using Homework.PriceCalculator.Domain.Entities;
 using Homework.PriceCalculator.Domain.Models;
+using Homework.PriceCalculator.Domain.Seporated;
 using Homework.PriceCalculator.Domain.Services.Interfaces;
-using Microsoft.Extensions.Options;
 
 namespace Homework.PriceCalculator.Domain.Services;
 

@@ -1,7 +1,7 @@
-﻿using Workshop.Api.Dal.Entities;
-using Workshop.Api.Dal.Repositories.Interfaces;
+﻿using Homework.PriceCalculator.Domain.Entities;
+using Homework.PriceCalculator.Domain.Seporated;
 
-namespace Workshop.Api.Dal.Repositories;
+namespace Homework.PriceCalculator.Infrastructure.Dal.Repositories;
 
 public class GoodsRepository : IGoodsRepository
 {

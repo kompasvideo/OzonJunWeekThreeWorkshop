@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Workshop.Api.Dal.Entities;
-using Workshop.Api.Dal.Repositories.Interfaces;
+﻿using Homework.PriceCalculator.Domain.Entities;
+using Homework.PriceCalculator.Domain.Seporated;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Workshop.Api.Controllers.V3;
 

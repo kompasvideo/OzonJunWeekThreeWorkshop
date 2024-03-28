@@ -1,12 +1,11 @@
 ﻿using System.Net;
+using Homework.PriceCalculator.Domain;
+using Homework.PriceCalculator.Domain.Seporated;
+using Homework.PriceCalculator.Domain.Services;
+using Homework.PriceCalculator.Domain.Services.Interfaces;
+using Homework.PriceCalculator.Infrastructure.Dal.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 using Workshop.Api.ActionFilters;
-using Workshop.Api.Bll;
-using Workshop.Api.Bll.Services;
-using Workshop.Api.Bll.Services.Interfaces;
-using Workshop.Api.Dal.Repositories;
-using Workshop.Api.Dal.Repositories.Interfaces;
 using Workshop.Api.HostedServices;
 using Workshop.Api.Middlewaries;
 

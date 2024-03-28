@@ -1,8 +1,7 @@
-﻿using System.Text.Json;
-using FluentValidation;
+﻿using FluentValidation;
+using Homework.PriceCalculator.Domain.Models;
+using Homework.PriceCalculator.Domain.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Workshop.Api.Bll.Models;
-using Workshop.Api.Bll.Services.Interfaces;
 using Workshop.Api.Requests.V3;
 using Workshop.Api.Responses.V3;
 using Workshop.Api.Validators;

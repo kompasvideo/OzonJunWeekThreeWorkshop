@@ -1,5 +1,5 @@
-﻿using Workshop.Api.Bll.Services.Interfaces;
-using Workshop.Api.Dal.Repositories.Interfaces;
+﻿using Homework.PriceCalculator.Domain.Seporated;
+using Homework.PriceCalculator.Domain.Services.Interfaces;
 
 namespace Workshop.Api.HostedServices;
 

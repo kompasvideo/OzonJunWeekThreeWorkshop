@@ -1,6 +1,6 @@
-﻿using Workshop.Api.Dal.Entities;
+﻿using Homework.PriceCalculator.Domain.Entities;
 
-namespace Workshop.Api.Dal.Repositories.Interfaces;
+namespace Homework.PriceCalculator.Domain.Seporated;
 
 public interface IStorageRepository
 {

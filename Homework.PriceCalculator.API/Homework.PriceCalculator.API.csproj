@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>true</InvariantGlobalization>
@@ -9,23 +9,10 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.8.0" />
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.12" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-
-
-
-
-
-
-
-
+<!--    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="6.0.0" />-->
   </ItemGroup>
-
   <ItemGroup>
-    <Folder Include="Bll\" />
+    <ProjectReference Include="..\Homework.PriceCalculator.Infrastructure\Homework.PriceCalculator.Infrastructure.csproj" />
   </ItemGroup>
-
-
-
-
 </Project>
