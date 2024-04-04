@@ -5,6 +5,7 @@ using Homework.PriceCalculator.Domain.Services;
 using Homework.PriceCalculator.Domain.Services.Interfaces;
 using Homework.PriceCalculator.Infrastructure.Dal.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Workshop.Api.ActionFilters;
 using Workshop.Api.HostedServices;
 using Workshop.Api.Middlewaries;
@@ -35,6 +36,7 @@ public class Startup
                 x.Filters.Add(new ProducesResponseTypeAttribute((int)HttpStatusCode.OK));
             });
         services.Configure<PriceCalculatorOptions>(_configuration.GetSection("PriceCalculatorOptions"));
+        services.AddScoped(x => x.GetRequiredService<IOptionsSnapshot<PriceCalculatorOptions>>().Value);
         services.AddControllers();
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen(o =>
@@ -48,7 +50,11 @@ public class Startup
         //         // _configuration.GetValue<double>("PriceCalculatorOptions:WeightToPriceRatio"),
         //         x.GetRequiredService<IStorageRepository>()
         //         ));
-        services.AddScoped<IPriceCalculatorService, PriceCalculatorService>();
+        services.AddScoped<IPriceCalculatorService, PriceCalculatorService>(x =>
+        {
+            var options = x.GetRequiredService<IOptionsSnapshot<PriceCalculatorOptions>>().Value;
+            return new PriceCalculatorService(options, x.GetRequiredService<IStorageRepository>());
+        });
         services.AddSingleton<IStorageRepository, StorageRepository>();
         services.AddSingleton<IGoodsRepository, GoodsRepository>();
         services.AddHostedService<GoodsSyncHostedService>();
