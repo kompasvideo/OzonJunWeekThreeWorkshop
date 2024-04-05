@@ -7,7 +7,7 @@ using Homework.PriceCalculator.Domain.Services.Interfaces;
 
 namespace Homework.PriceCalculator.Domain.Services;
 
-public class PriceCalculatorService : IPriceCalculatorService
+internal sealed class PriceCalculatorService : IPriceCalculatorService
 {
     private readonly double _volumeToPriceRatio;
     private readonly double _weightToPriceRatio;

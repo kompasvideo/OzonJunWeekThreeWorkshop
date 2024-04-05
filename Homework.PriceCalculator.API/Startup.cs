@@ -31,23 +31,23 @@ public class Startup
             .AddDomain(_configuration)
             .AddInfrastructure()
             .AddControllers()
-            .AddMvcOptions(x =>
-            {
-                x.Filters.Add(new ExceptionFilterAttribute());
-                x.Filters.Add(new ResponseTypeAttribute((int)HttpStatusCode.InternalServerError));
-                x.Filters.Add(new ResponseTypeAttribute((int)HttpStatusCode.BadRequest));
-                x.Filters.Add(new ProducesResponseTypeAttribute((int)HttpStatusCode.OK));
-            }).Services
+            .AddMvcOptions(ConfigureMVC)
+            .Services
             .AddEndpointsApiExplorer()
-            ;
-        services.AddScoped(x => x.GetRequiredService<IOptionsSnapshot<PriceCalculatorOptions>>().Value);
-        services.AddControllers();
-        services.AddSwaggerGen(o =>
-        {
-            o.CustomSchemaIds(x => x.FullName);
-        });
-        services.AddHostedService<GoodsSyncHostedService>();
-        services.AddHttpContextAccessor();
+            .AddSwaggerGen(o =>
+            {
+                o.CustomSchemaIds(x => x.FullName);
+            })
+            .AddHostedService<GoodsSyncHostedService>()
+            .AddHttpContextAccessor();
+    }
+
+    private static void ConfigureMVC(MvcOptions x)
+    {
+        x.Filters.Add(new ExceptionFilterAttribute());
+        x.Filters.Add(new ResponseTypeAttribute((int)HttpStatusCode.InternalServerError));
+        x.Filters.Add(new ResponseTypeAttribute((int)HttpStatusCode.BadRequest));
+        x.Filters.Add(new ProducesResponseTypeAttribute((int)HttpStatusCode.OK));
     }
 
     public void Configure(IHostEnvironment environment, IApplicationBuilder app)

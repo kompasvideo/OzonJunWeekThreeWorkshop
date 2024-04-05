@@ -3,7 +3,7 @@ using Homework.PriceCalculator.Domain.Seporated;
 
 namespace Homework.PriceCalculator.Infrastructure.Dal.Repositories;
 
-public class GoodsRepository : IGoodsRepository
+internal sealed class GoodsRepository : IGoodsRepository
 {
     private readonly Dictionary<int, GoodViewModel> _store = new();
 

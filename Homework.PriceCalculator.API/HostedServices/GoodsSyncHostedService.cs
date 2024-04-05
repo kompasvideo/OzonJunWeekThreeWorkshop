@@ -1,4 +1,5 @@
-﻿using Homework.PriceCalculator.Domain.Seporated;
+﻿using Homework.PriceCalculator.Domain.Separated;
+using Homework.PriceCalculator.Domain.Seporated;
 using Homework.PriceCalculator.Domain.Services.Interfaces;
 
 namespace Workshop.Api.HostedServices;

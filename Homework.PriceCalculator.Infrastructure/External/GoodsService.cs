@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Homework.PriceCalculator.Domain.Entities;
+﻿using Homework.PriceCalculator.Domain.Entities;
+using Homework.PriceCalculator.Domain.Separated;
 using Homework.PriceCalculator.Domain.Services.Interfaces;
 
-namespace Homework.PriceCalculator.Domain.Services;
+namespace Homework.PriceCalculator.Infrastructure.External;
 
 public class GoodsService : IGoodsService
 {
