@@ -9,6 +9,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Homework.PriceCalculator.Domain\Homework.PriceCalculator.Domain.csproj" />
+      <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.8" />
     </ItemGroup>
-
 </Project>
