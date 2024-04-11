@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 using Homework.PriceCalculator.Domain.Models;
 using Homework.PriceCalculator.Domain.Services.Interfaces;
+using Homework.PriceCalculator.Domain.Validators;
 using Microsoft.AspNetCore.Mvc;
 using Workshop.Api.Requests.V3;
 using Workshop.Api.Responses.V3;
-using Workshop.Api.Validators;
 
 namespace Workshop.Api.Controllers.V3;
 
@@ -34,9 +34,6 @@ public class DeliveryPriceController : ControllerBase
         var bodyString = await sr.ReadToEndAsync();
         _logger.LogInformation(bodyString);
 
-        var validator = new CalculateRequestValidator();
-        //validator.Validate(request);
-        validator.ValidateAndThrowAsync(request);
         
         // var sr = new StreamReader(_httpContextAccessor.HttpContext.Request.Body);
         // var bodyString = await sr.ReadToEndAsync();

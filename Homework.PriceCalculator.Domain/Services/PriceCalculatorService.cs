@@ -1,9 +1,9 @@
-﻿using System;
-using System.Linq;
+﻿using FluentValidation;
 using Homework.PriceCalculator.Domain.Entities;
 using Homework.PriceCalculator.Domain.Models;
 using Homework.PriceCalculator.Domain.Seporated;
 using Homework.PriceCalculator.Domain.Services.Interfaces;
+using Homework.PriceCalculator.Domain.Validators;
 
 namespace Homework.PriceCalculator.Domain.Services;
 
@@ -25,8 +25,11 @@ internal sealed class PriceCalculatorService : IPriceCalculatorService
         _storageRepository = storageRepository;
     }
 
-    public double CalculatePrice(GoodModel[] goods)
+    public double CalculatePrice(IReadOnlyList<GoodModel> goods)
     {
+        var validator = new GoodsValidator();
+        validator.ValidateAndThrow(goods);
+        
         if (goods.Any())
         {
             throw new ArgumentException("Список товаров пустой");
@@ -39,13 +42,13 @@ internal sealed class PriceCalculatorService : IPriceCalculatorService
         return resultPrice;
     }
 
-    private double CalculatePriceByVolume(GoodModel[] goods, out int volume)
+    private double CalculatePriceByVolume(IReadOnlyList<GoodModel> goods, out int volume)
     {
         volume = goods.Sum(x => x.Length * x.Height * x.Width);
         return _volumeToPriceRatio * volume / 1000.0d;
     }
 
-    private double CalculatePriceByWeight(GoodModel[] goods, out double weight)
+    private double CalculatePriceByWeight(IReadOnlyList<GoodModel> goods, out double weight)
     {
         weight = goods.Sum(x => x.Weight);
         return _weightToPriceRatio * weight;

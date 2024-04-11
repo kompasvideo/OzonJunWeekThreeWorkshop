@@ -13,6 +13,10 @@
 <!--    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="6.0.0" />-->
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Homework.PriceCalculator.Domain.DependencyInjection.Extensions\Homework.PriceCalculator.Domain.DependencyInjection.Extensions.csproj" />
     <ProjectReference Include="..\Homework.PriceCalculator.Infrastructure\Homework.PriceCalculator.Infrastructure.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Validators\" />
   </ItemGroup>
 </Project>
