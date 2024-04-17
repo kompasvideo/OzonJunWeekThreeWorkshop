@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using FluentValidation;
+using Homework.PriceCalculator.Domain.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -11,7 +12,7 @@ public partial class ExceptionFilterAttribute : Attribute, IExceptionFilter
     {
         switch (context.Exception)
         {
-            case ValidationException exception:
+            case DomainException exception:
                 HandleBadRequest(context, exception);
                 return;
             default:
@@ -29,7 +30,7 @@ public partial class ExceptionFilterAttribute : Attribute, IExceptionFilter
         context.Result = jsonResult;
     }
 
-    private static void HandleBadRequest(ExceptionContext context, ValidationException exception)
+    private static void HandleBadRequest(ExceptionContext context, Exception exception)
     {
         var jsonResult = new JsonResult(new ErrorResponse(
             HttpStatusCode.BadRequest, 

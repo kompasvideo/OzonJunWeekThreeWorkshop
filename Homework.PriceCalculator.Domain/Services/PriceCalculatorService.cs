@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using Homework.PriceCalculator.Domain.Entities;
+using Homework.PriceCalculator.Domain.Exceptions;
 using Homework.PriceCalculator.Domain.Models;
 using Homework.PriceCalculator.Domain.Seporated;
 using Homework.PriceCalculator.Domain.Services.Interfaces;
@@ -27,13 +28,24 @@ internal sealed class PriceCalculatorService : IPriceCalculatorService
 
     public double CalculatePrice(IReadOnlyList<GoodModel> goods)
     {
+        try
+        {
+            return CalculateUnsave(goods);
+        }
+        catch (ValidationException e)
+        {
+            throw new DomainException("incorrect input", e);
+        }
+        catch (DivideByZeroException e)
+        {
+            throw new DomainException("division by zero", e);
+        }
+    }
+
+    private double CalculateUnsave(IReadOnlyList<GoodModel> goods)
+    {
         var validator = new GoodsValidator();
         validator.ValidateAndThrow(goods);
-        
-        if (goods.Any())
-        {
-            throw new ArgumentException("Список товаров пустой");
-        }
 
         var volumePrice = CalculatePriceByVolume(goods, out var volume);
         var weightPrice = CalculatePriceByWeight(goods, out var weight);

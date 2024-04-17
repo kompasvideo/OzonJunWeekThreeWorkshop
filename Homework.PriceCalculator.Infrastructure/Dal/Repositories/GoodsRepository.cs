@@ -1,5 +1,6 @@
 ﻿using Homework.PriceCalculator.Domain.Entities;
 using Homework.PriceCalculator.Domain.Seporated;
+using Homework.PriceCalculator.Domain.Services.Exceptions;
 
 namespace Homework.PriceCalculator.Infrastructure.Dal.Repositories;
 
@@ -19,5 +20,15 @@ internal sealed class GoodsRepository : IGoodsRepository
         return _store.Select(x => x.Value).ToArray();
     }
 
-    public GoodViewModel Get(int id) => _store[id];
+    public GoodViewModel Get(int id)
+    {
+        try
+        {
+            return _store[id];
+        }
+        catch (KeyNotFoundException e)
+        {
+            throw new EntityNotFoundException("Not found ", e);
+        }
+    }
 }
