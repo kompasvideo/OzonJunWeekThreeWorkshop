@@ -10,6 +10,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework.PriceCalculator.AP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework.PriceCalculator.Domain.DependencyInjection.Extensions", "Homework.PriceCalculator.Domain.DependencyInjection.Extensions\Homework.PriceCalculator.Domain.DependencyInjection.Extensions.csproj", "{DE5C0B69-B7B0-40A8-8CD3-CFDE3FB797AD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9A698335-DE60-417C-B2C2-FABC17A44130}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework.PriceCalculator.Domain.UnitTests", "tests\Homework.PriceCalculator.Domain.UnitTests\Homework.PriceCalculator.Domain.UnitTests.csproj", "{D304A4B3-DE8A-45EA-B123-2DBC50F13E2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,11 +36,16 @@ Global
 		{DE5C0B69-B7B0-40A8-8CD3-CFDE3FB797AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE5C0B69-B7B0-40A8-8CD3-CFDE3FB797AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE5C0B69-B7B0-40A8-8CD3-CFDE3FB797AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D304A4B3-DE8A-45EA-B123-2DBC50F13E2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D304A4B3-DE8A-45EA-B123-2DBC50F13E2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D304A4B3-DE8A-45EA-B123-2DBC50F13E2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D304A4B3-DE8A-45EA-B123-2DBC50F13E2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FF5E7BAA-45B6-4AF7-BEFE-61D8CF255CB0} = {88A5C139-CD51-428B-93CF-A03F8EA2D537}
 		{762830D1-2ADE-49A6-8AA4-6E9FA7390A55} = {88A5C139-CD51-428B-93CF-A03F8EA2D537}
 		{3DDF71C9-66C0-4146-BDAF-3304338138C6} = {88A5C139-CD51-428B-93CF-A03F8EA2D537}
 		{DE5C0B69-B7B0-40A8-8CD3-CFDE3FB797AD} = {88A5C139-CD51-428B-93CF-A03F8EA2D537}
+		{D304A4B3-DE8A-45EA-B123-2DBC50F13E2A} = {9A698335-DE60-417C-B2C2-FABC17A44130}
 	EndGlobalSection
 EndGlobal

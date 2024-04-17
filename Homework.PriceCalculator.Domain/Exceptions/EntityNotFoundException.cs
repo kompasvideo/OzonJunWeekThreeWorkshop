@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Homework.PriceCalculator.Domain.Services.Exceptions;
+namespace Homework.PriceCalculator.Domain.Exceptions;
 
 public class EntityNotFoundException : InfrastructureException
 {

@@ -22,7 +22,9 @@ public static class DomainServiceCollectionExtension
         services.AddScoped<IPriceCalculatorService, PriceCalculatorService>(x =>
         {
             var options = x.GetRequiredService<IOptionsSnapshot<PriceCalculatorOptions>>().Value;
-            return new PriceCalculatorService(options, x.GetRequiredService<IStorageRepository>());
+            return new PriceCalculatorService(options,
+                x.GetRequiredService<IGoodsRepository>(),
+                x.GetRequiredService<IStorageRepository>());
         });
         return services;
     }

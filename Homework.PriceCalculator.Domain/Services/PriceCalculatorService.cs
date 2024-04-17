@@ -13,10 +13,12 @@ internal sealed class PriceCalculatorService : IPriceCalculatorService
     private readonly double _volumeToPriceRatio;
     private readonly double _weightToPriceRatio;
     private readonly IStorageRepository _storageRepository;
+    private readonly  IGoodsRepository _repository;
 
     public PriceCalculatorService( 
         // double volumeToPriceRatio, double weightToPriceRatio,
         PriceCalculatorOptions options,
+        IGoodsRepository repository,
         IStorageRepository storageRepository)
     {
         // _volumeToPriceRatio = volumeToPriceRatio;
@@ -24,6 +26,7 @@ internal sealed class PriceCalculatorService : IPriceCalculatorService
         _volumeToPriceRatio = options.VolumeToPriceRatio;
         _weightToPriceRatio = options.WeightToPriceRatio;
         _storageRepository = storageRepository;
+        _repository = repository;
     }
 
     public double CalculatePrice(IReadOnlyList<GoodModel> goods)
@@ -31,6 +34,28 @@ internal sealed class PriceCalculatorService : IPriceCalculatorService
         try
         {
             return CalculateUnsave(goods);
+        }
+        catch (ValidationException e)
+        {
+            throw new DomainException("incorrect input", e);
+        }
+        catch (DivideByZeroException e)
+        {
+            throw new DomainException("division by zero", e);
+        }
+    }
+    
+    public double CalculatePrice(int id)
+    {
+        try
+        {
+            var good = _repository.Get(id);
+            return CalculateUnsave(new[] {new GoodModel(
+                good.Height, good.Length, good.Width, good.Weight)});
+        }
+        catch (EntityNotFoundException e)
+        {
+            throw new DomainException("incorrect input", e);
         }
         catch (ValidationException e)
         {

@@ -1,6 +1,6 @@
 ﻿using Homework.PriceCalculator.Domain.Entities;
+using Homework.PriceCalculator.Domain.Exceptions;
 using Homework.PriceCalculator.Domain.Seporated;
-using Homework.PriceCalculator.Domain.Services.Exceptions;
 
 namespace Homework.PriceCalculator.Infrastructure.Dal.Repositories;
 
