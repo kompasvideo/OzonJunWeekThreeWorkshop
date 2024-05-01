@@ -52,11 +52,11 @@ public class Startup
 
     public void Configure(IHostEnvironment environment, IApplicationBuilder app)
     {
-        if (environment.IsDevelopment())
-        {
+        // if (environment.IsDevelopment())
+        // {
             app.UseSwagger();
             app.UseSwaggerUI();
-        }
+        // }
 
         app.UseRouting();
         app.Use(async (context, next) =>

@@ -56,11 +56,15 @@ public class PriceCalculatorServiceTest
     [MemberData(nameof(CalculatePriceByVolumeData))]
     public void PriceCalculatorService_WhenCalculatePriceByVolume_Success(GoodModel model, int expected)
     {
+        StorageEntity storageEntity = null;
         // Arrange
         var options = new PriceCalculatorOptions() {VolumeToPriceRatio = 1, WeightToPriceRatio = 1} ;
         
         var repositoryMock = new Mock<IGoodsRepository>();
-        var storageMock = new Mock<IStorageRepository>();
+        var storageMock = new Mock<IStorageRepository>(MockBehavior.Strict);
+        storageMock
+            .Setup(x => x.Save(It.IsAny<StorageEntity>()))
+            .Callback<StorageEntity>(x => storageEntity = x);
         
         var cut = new PriceCalculatorService(
             options, 
@@ -71,7 +75,9 @@ public class PriceCalculatorServiceTest
         var result = cut.CalculatePrice(new [] {model});
 
         // Assert
+        Assert.NotNull(storageEntity);
         Assert.Equal(expected, result);
+        storageMock.Verify(x => x.Save(It.IsAny<StorageEntity>()));
     }
 
     public static IEnumerable<object[]> CalculatePriceByVolumeData

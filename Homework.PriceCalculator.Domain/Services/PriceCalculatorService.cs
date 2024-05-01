@@ -74,6 +74,7 @@ internal sealed class PriceCalculatorService : IPriceCalculatorService
 
         var volumePrice = CalculatePriceByVolume(goods, out var volume);
         var weightPrice = CalculatePriceByWeight(goods, out var weight);
+        
         var resultPrice = Math.Max(volumePrice, weightPrice);
         _storageRepository.Save(new StorageEntity(volume, resultPrice, DateTime.UtcNow, weight));
         return resultPrice;
