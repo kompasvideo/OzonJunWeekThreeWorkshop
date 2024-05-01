@@ -24,7 +24,7 @@ public class DeliveryPriceController : ControllerBase
                     x.height,
                     x.length,
                     x.width, 
-                    0))
+                    1))
                     .ToArray());
         return new CalculateResponse(result);
     }
